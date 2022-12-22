@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<form action="{% url 'common:main' %}">
+<html>
+<head>
+    <title>main</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- pybo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+</head>
+
+<body>
+<!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
+<nav class="navbar navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="d-flex align-items-center">
+       </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+              {% if user.is_authenticated %}
+    <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+    {% else %}
+            <a class="nav-link active" aria-current="page" href="{% url 'common:login' %}">Login</a>
+
+
+            {% endif %}
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'common:signup' %}">Sign up</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              MyPage
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+              <li><a class="dropdown-item" href="#">나의 리뷰</a></li>
+              <li><a class="dropdown-item" href="#">회원정보 설정</a></li>
+
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+        <div class="logo" style="padding-top: 100px">
+            <a class="navbar-brand"  href="#" >
+        <img src="https://postfiles.pstatic.net/MjAyMjEyMjJfMzAw/MDAxNjcxNjc0MDg5NDc1.K6IZ-bbwy_YGFP20SiAL-KAu2VVXDZ-FL3k155JHcPcg.zAahbo4yJ8BJGcnizMseYN-9tnwzb_m1grJ8h3Tx_4Qg.PNG.thisjis/1051-removebg-preview.png?type=w966" alt="로고" height="100" width="400">
+      </a>
+        </div>
+        <div class="Search">
+            <div class="search-box-tool">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="input1">
+
+
+                </div>
+            </div>
+            <div class="search-click-bar">
+                <div class="etc">
+                    <a href="" class="contents">I'm your man</a>
+                    <a href="" class="contents">I'm your man 그대여</a>
+                </div>
+            </div>
+        </div>
+
+
+</div>
+
+</html>

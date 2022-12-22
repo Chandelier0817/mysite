@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<div class="container my-3">
+    <form method="post" action="{% url 'common:login' %}">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+
+    <link rel="stylesheet" href="/static/login.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+
+<style>
+    *{
+        font-family: 'NanumBarunGothicLight';;
+
+    }
+</style>
+</head>
+
+<body>
+    <section id="wrapper">
+        <header>
+            <select name="language" id="language">
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+                <option value="ch_cn">中文(简体)</option>
+                <option value="ch_tw">中文(台湾)</option>
+            </select>
+        </header>
+        <section class="login_area">
+            <header>
+                <div class="text-center text-white" style="padding-top: 100px">
+                <a href="http://127.0.0.1:8000/common/main/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" >
+        <img src="https://postfiles.pstatic.net/MjAyMjEyMjJfMzAw/MDAxNjcxNjc0MDg5NDc1.K6IZ-bbwy_YGFP20SiAL-KAu2VVXDZ-FL3k155JHcPcg.zAahbo4yJ8BJGcnizMseYN-9tnwzb_m1grJ8h3Tx_4Qg.PNG.thisjis/1051-removebg-preview.png?type=w966" alt="로고" height="80" width="200">
+       </a>
+                </div>
+            </header>
+            <section class="login_area">
+
+                <input type="text" id="username" name="username" placeholder="아이디">
+                <input type="text" id="password" name="password"  placeholder="비밀번호">
+                <button type="submit" class="btn" >로그인</button>
+                <div class="secure">
+                    <div class="checkbox">
+                        <input type="checkbox" name="id_keep" id="id_keep">
+                        <label for="id_keep">　로그인 상태 유지</label>
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ip_on">
+                        <ul>
+                            {% if not user.is_authenticated %}
+                            <li><a href="{% url 'common:signup' %}" class="onetime">회원가입</a></li>
+                            <li><a href="#" class="onetime">Lost Password</a> <i class="fas fa-question"></i></li>
+                        {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </section>
+</body>
+
+</html>
